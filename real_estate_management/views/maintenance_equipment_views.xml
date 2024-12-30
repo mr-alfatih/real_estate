@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_maintenance_equipment_form_inherit_property" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.inherit.property</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//field[@name='owner_user_id']" position="after">-->
+            <xpath expr="//group/group[2]" position="after">
+                <group string="Property Information">
+                    <group>
+                        <field name="property_id"/>
+                        <!--                    <field name="property_building"/>-->
+                        <field name="property_reference"/>
+                    </group>
+                    <group>
+                        <field name="property_location"/>
+                        <!--                    <field name="property_floor"/>-->
+                        <!--                    <field name="property_project"/>-->
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

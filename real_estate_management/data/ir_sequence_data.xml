@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- Property Sequence -->
+        <record id="property_sequence" model="ir.sequence">
+            <field name="name">Property sequence</field>
+            <field name="code">property.property</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">PI/</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

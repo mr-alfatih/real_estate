@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    <data noupdate="0">-->
+
+    <record id="website_menu_create_ticket" model="website.menu">
+        <field name="name">Create Ticket</field>
+        <field name="url">/property_webform</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" eval="2"/>
+    </record>
+
+    <template id="create_property_ticket" name="Create Property Ticket">
+        <t t-call="website.layout">
+            <!--            <t t-set="title">Properties</t>-->
+            <!--            <div id="wrap">-->
+            <!--                <div class="oe_structure">-->
+            <!--                    <div class="container">-->
+            <!--                        <h1 class="mt-4 mb-3">Create Property Ticket</h1>-->
+            <!--                        <form role="form" action="/create/property_ticket" method="POST">-->
+            <!--                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+            <!--                            <div class="form-group">-->
+            <!--                                <lable for="partner_id" class="control-label">Property Owner</lable>-->
+            <!--                                <select name="partner_id" class="form-control link-style">-->
+            <!--                                        <t t-foreach="partner" t-as="partner">-->
+            <!--                                            <option t-esc="partner.name" t-att-value="partner.id"/>-->
+            <!--                                        </t>-->
+            <!--                                </select>-->
+            <!--                            </div>-->
+            <!--                            <br/>-->
+            <!--                            <div class="form-group">-->
+            <!--                                <lable for="property_id" class="control-label">Property</lable>-->
+            <!--                                <select name="property_id" class="form-control link-style">-->
+            <!--                                        <t t-foreach="properties" t-as="property">-->
+            <!--                                            <option t-esc="property.name" t-att-value="property.id"/>-->
+            <!--                                        </t>-->
+            <!--                                </select>-->
+            <!--                            </div>-->
+            <!--                            <br/>-->
+            <!--                            <div class="form-group">-->
+            <!--                                <lable for="name" class="control-label">Property Complaint</lable>-->
+            <!--                                <input type="text" name="name" t-att-value="name" id="property_complaint"-->
+            <!--                                       class="form-control" placeholder="Enter Property Complaint" required="required"/>-->
+            <!--                            </div>-->
+            <!--                            <br/>-->
+            <!--                            <div class="clearfix oe_login_buttons">-->
+            <!--                                <button type="submit" class="btn btn-primary pull-left">Create Ticket</button>-->
+            <!--                            </div>-->
+
+            <!--                        </form>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container py-4">
+                        <h1 class="mt-4 mb-3 text-center">Create Property Ticket</h1>
+                        <form role="form" action="/create/property_ticket" method="POST" class="needs-validation"
+                        >
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                            <div class="mb-3">
+                                <label for="partner_id" class="form-label">Property Owner</label>
+                                <select name="partner_id" id="partner_id" class="form-select" required="required">
+                                    <t t-foreach="partner" t-as="partner">
+                                        <option t-esc="partner.name" t-att-value="partner.id"/>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="property_id" class="form-label">Property</label>
+                                <select name="property_id" id="property_id" class="form-select" required="required">
+                                    <t t-foreach="properties" t-as="property">
+                                        <option t-esc="property.name" t-att-value="property.id"/>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Property Complaint</label>
+                                <input type="text" name="name" id="property_complaint" t-att-value="name"
+                                       class="form-control" placeholder="Enter Property Complaint" required="required"/>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="property_complaint_description" class="form-label">Complaint Description
+                                </label>
+                                <textarea name="property_complaint_description" id="property_complaint_description" t-att-value="property_complaint_description"
+                                          class="form-control" placeholder="Enter Property Complaint Details" rows="4"/>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary px-4">Create Ticket</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </t>
+    </template>
+    <record id="property_thanks" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="type">qweb</field>
+        <field name="url">/property-thanks</field>
+        <!--        <field name="website_publish">True</field>-->
+        <field name="key">real_estate_management.property_thanks</field>
+        <field name="arch" type="xml">
+            <t name="Thanks" t-name="real_estate_management.property_thanks">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Thanks</h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success" role="status">
+                                        You have successfully created a property ticket
+                                    </div>
+                                    <p>
+                                        We will get back to you as soon as possible
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+
+
+    <!--    </data>-->
+
+</odoo>
