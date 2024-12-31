@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_lead_form_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="before">
+                <page name="crm_order_lines" string="Order Lines">
+                    <field name="crm_order_line_ids">
+                        <tree>
+                            <field name="product_id" string="Product"/>
+                            <field name="is_sale_rent" string="Sale/Rent"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="product_id" string="Product"/>
+                                </group>
+                                <group>
+                                    <field name="is_sale_rent" string="Sale/Rent"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

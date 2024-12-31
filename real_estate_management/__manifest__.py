@@ -34,6 +34,7 @@
         'views/property_website.xml',
         'views/res_partner.xml',
         'views/product_template_view.xml',
+        'views/crm_lead.xml',
     ],
     'assets': {
         'web.assets_frontend': [
