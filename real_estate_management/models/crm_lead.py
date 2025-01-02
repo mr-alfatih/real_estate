@@ -8,6 +8,22 @@ class CrmLead(models.Model):
 
     crm_order_line_ids = fields.One2many('crm.order.line', 'crm_order_id')
 
+    def _get_action_rental_context(self):
+        rent_context = super(CrmLead, self)._get_action_rental_context()
+        order_lines = []
+        for line in self.crm_order_line_ids:
+            if line.is_sale_rent == 'rent':
+                order_lines.append((0, 0, {
+                    'product_template_id': line.product_id.id,
+                    'product_uom_qty': 1,
+                    'product_uom': line.product_id.uom_id.id,
+                    'price_unit': line.product_id.list_price,
+                }))
+
+        rent_context['default_order_line'] = order_lines
+        print('rent_context--------->',rent_context)
+        return rent_context
+
     def action_new_quotation(self):
         action = super(CrmLead, self).action_new_quotation()
         order_lines = []

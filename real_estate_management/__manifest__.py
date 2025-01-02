@@ -15,7 +15,7 @@
     'maintainer': 'Cybobits',
     'currency': 'USD',
     'website': 'https://www.cybobits.com/',
-    'depends': ['base', 'mail', 'sale_management', 'website',
+    'depends': ['base', 'mail', 'sale_management', 'website','crm', 'sale_renting_crm','helpdesk','maintenance',
                 'base_geolocalize', 'web', 'sale', 'board', 'project'],
     'data': [
         'security/user_groups.xml',
